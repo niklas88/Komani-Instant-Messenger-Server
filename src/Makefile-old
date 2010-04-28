@@ -1,0 +1,46 @@
+OS= $(shell echo `uname`)
+
+ifeq ($(OS),Darwin)
+
+	LDFLAGS=-L/sw/lib -lmysqlclient
+	INCLUDEPATH=-I/sw/include
+	CXXFLAGS+=-O3 $(INCLUDEPATH)  -mtune=pentium-m -MD 
+endif
+ifeq ($(OS),Linux)
+
+	LDFLAGS=-lmysqlclient -lpthread
+	INCLUDEPATH=
+	CXXFLAGS+=-O3 $(INCLUDEPATH)  -MD
+endif
+
+SRCS=Database.cpp Query.cpp SysLog.cpp enum_t.cpp mbuffer.cpp str.cpp Mutex.cpp StderrLog.cpp TCPNet.cpp main.cpp set_t.cpp user.cpp
+OBJS=$(patsubst %.cpp, %.o, $(SRCS))
+HDIR=../include
+DEPS= $(patsubst %.o,%.d,$(OBJS))
+
+all: kimd
+
+kimd: $(OBJS) Makefile 
+	$(CXX) $(LDFLAGS) $(OBJS) -o $@
+
+user.o: 	user.cpp Makefile
+Query.o: 	Query.cpp Makefile 
+Database.o: 	Database.cpp Makefile
+SysLog.o: 	SysLog.cpp  Makefile
+enum_t.o: 	enum_t.cpp Makefile
+main.o: 	main.cpp Makefile
+mbuffer.o: 	mbuffer.cpp Makefile
+str.o: 		str.cpp Makefile
+Mutex.o: 	Mutex.cpp Makefile
+StderrLog.o: 	StderrLog.cpp Makefile
+TCPNet.o: 	TCPNet.cpp Makefile
+set_t.o: 	set_t.cpp Makefile
+
+deps: $(DEPS)
+	
+
+%.d: %.cpp
+	$(CXX) $(CXXFLAGS) -E  $< > /dev/null
+
+-include $(DEPS)
+.PHONY: all clean install
