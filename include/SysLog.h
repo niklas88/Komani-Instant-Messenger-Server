@@ -24,7 +24,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef _SYSLOG_H
 #define _SYSLOG_H
 #ifndef WIN32
-
+#include <cstdlib>
+#include <cstring>
 #include <sys/syslog.h>
 #include "IError.h"
 

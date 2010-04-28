@@ -4,13 +4,13 @@ ifeq ($(OS),Darwin)
 
 	LDFLAGS=-L/sw/lib -lmysqlclient
 	INCLUDEPATH=-I/sw/include
-	CXXFLAGS+=-O3 $(INCLUDEPATH) -mtune=pentium-m -MD -Wall 
+	CXXFLAGS+=-O3 $(INCLUDEPATH) -mtune=pentium-m -MD -Wall -DPTHREAD_STACK_MIN=16384
 endif
 ifeq ($(OS),Linux)
 
 	LDFLAGS=-lmysqlclient -lpthread
 	INCLUDEPATH=
-	CXXFLAGS+=-O3 $(INCLUDEPATH) -MD -Wall
+	CXXFLAGS+=-O3 $(INCLUDEPATH) -MD -Wall -DPTHREAD_STACK_MIN=16384
 endif
 
 SRCS=mbuffer.cpp TCPNet.cpp str.cpp main.cpp  user.cpp 

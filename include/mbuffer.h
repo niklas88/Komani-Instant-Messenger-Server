@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 typedef unsigned char	UINT8;
 typedef signed char		INT8;

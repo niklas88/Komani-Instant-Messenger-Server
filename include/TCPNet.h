@@ -10,6 +10,8 @@
 //
 #include <iostream>
 #include <string>
+#include <cstdio>
+#include <cstdlib>
 #include "mbuffer.h"
 
 #ifdef _WIN32

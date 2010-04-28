@@ -6,6 +6,8 @@
  *  Email
  ****************************************************************************/
 #include <string>
+#include <cstdlib>
+#include <algorithm>
 #ifndef _STRHPP
 #define _STRHPP
 std::string str(int value, int base);
