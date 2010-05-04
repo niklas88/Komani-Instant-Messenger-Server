@@ -20,9 +20,9 @@ all: smalltest
 smalltest: $(OBJS) Makefile 
 	$(CXX) $(LDFLAGS) $(OBJS) -o $@
 
-main.o: 	main.cpp Makefile
+main.o: 	       main.cpp Makefile
 TCPNet.o:       TCPNet.cpp Makefile
-mbuffer.o: 	mbuffer.cpp Makefile
+mbuffer.o: 	    mbuffer.cpp Makefile
 askpass.o:      askpass.cpp Makefile
 clean:
 	rm *.o
