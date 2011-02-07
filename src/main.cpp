@@ -288,7 +288,7 @@ User* Client=Auth(MyConn);
 	
 if(Client) {
 #ifdef Debug
-	std::cout<<"Authenthication correct\n";
+	std::cout<<"Authenthication correct!\n";
 #endif
     MyConn=0;//Wilden Zeiger sichern
 
